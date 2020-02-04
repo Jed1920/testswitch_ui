@@ -5,9 +5,19 @@ jobs:
       - image: circleci/node:9.9
     steps:
       - checkout
+
+      - restore_cache:
+          name: Restore cacher
+          key: npm-cache-v1-{{ checksum "package-lock.json" }}
+
       - run:
           name: Install dependecies
           command: npm install
+
+      - save_cache:
+          name: Save cache
+          key: npm-cache-v1-{{ checksum "package-lock.json" }}
+          
       - run:
           name: Run tests
           command: npm test
