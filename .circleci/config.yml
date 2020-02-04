@@ -31,4 +31,4 @@ jobs:
           command: npm test
       
       - codecov/upload:
-          file: ../coverage/coverage-final.json
+          file: coverage/coverage-final.json
