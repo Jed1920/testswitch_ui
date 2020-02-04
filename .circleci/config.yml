@@ -31,4 +31,4 @@ jobs:
           command: npm test
       
       - codecov/upload:
-          file: {{../coverage/clover.xml}}
+          file: coverage/converage-final.json
