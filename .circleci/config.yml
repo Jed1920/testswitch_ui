@@ -5,11 +5,7 @@ orbs:
 jobs:
 
   build:
-    steps:
-      - codecov/upload:
-        file: {{../coverage/clover.xml}}
-
-  build:
+  
     docker:
       - image: circleci/node:9.9
     steps:
@@ -32,3 +28,6 @@ jobs:
       - run:
           name: Run tests
           command: npm test
+      
+      - codecov/upload:
+          file: {{../coverage/clover.xml}}
