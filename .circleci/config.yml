@@ -31,4 +31,4 @@ jobs:
           command: npm run max-test
       
       - codecov/upload:
-          file: coverage/clover.xml
+          file: coverage/coverage-final.json
