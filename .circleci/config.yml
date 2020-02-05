@@ -28,7 +28,7 @@ jobs:
 
       - run:
           name: Run tests
-          command: npm run max-test
+          command: npm test -- --coverage
       
       - codecov/upload:
           file: coverage/coverage-final.json
