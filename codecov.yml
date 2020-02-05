@@ -1,9 +1,8 @@
-codecov:
-
-status:
-    project:
-      default:
-        target: 100%
+coverage:
+  status:
+      project:
+        default:
+          target: 100%
 
 ignore:
   - "src/index.js"
