@@ -32,4 +32,5 @@ jobs:
           command: npm test -- --coverage
       
       - codecov/upload:
+          conf: codecove.yml
           file: coverage/coverage-final.json
