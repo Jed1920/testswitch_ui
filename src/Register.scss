@@ -1,0 +1,32 @@
+.registerPage{
+    h1{
+        text-align: center;
+    }
+    .registerForm{
+        text-align: center;
+        font-family: 'Rubik', sans-serif;
+        font-size: 20px;
+
+        label{ 
+            margin-top: 20px;
+            font-weight: 700;
+        }
+        input{
+            margin:auto;
+            margin-bottom: 20px;
+            width:400px; 
+            display: block; 
+            
+        }
+        select{
+            width:200px; 
+            display: block; 
+            margin:auto; 
+        }
+        .registerButton{
+            width:200px;
+            margin-top:20px;
+            font-size: 20px;
+        }
+    }
+}

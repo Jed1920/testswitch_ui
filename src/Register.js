@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { addApplicantFetch } from './apiFetch'
+import './Register.scss';
 
 
 const fetchState = {
@@ -51,16 +52,27 @@ export function RegistrationForm(props){
         }
     }
     return (
-    <form onSubmit={handleSubmit}>
-        <input type="text" name="Name" onChange={event => setName(event.target.value)}/>
-        <input type="text" name="Email" onChange={event => setEmail(event.target.value)}/>
-        <input type="text" name="Contact Info" onChange={event => setContactInfo(event.target.value)}/>
-        <select name="Experience" onChange={event => setExperience(event.target.value)}>
-            <option value="No Experience">No Experience</option>
-            <option value="Beginner">Beginner</option>
-            <option value="Intermediate">Intermediate</option>
-            <option value="Expert">Expert</option>
-        </select>
-        <input type="submit" name="Submit Button" value="Register"/>
-    </form>)
+        <div className = "registerPage">
+            <h1>Registration Form</h1>
+            <form onSubmit={handleSubmit} className = "registerForm">
+                <label>Name</label>
+                <input type="text" name="Name" onChange={event => setName(event.target.value)}/>
+
+                <label>Email</label>
+                <input type="text" name="Email" onChange={event => setEmail(event.target.value)}/>
+
+                <label>Contact Info</label>
+                <input type="text" name="Contact Info" onChange={event => setContactInfo(event.target.value)}/>
+
+                <label>Experience</label>
+                <select name="Experience" onChange={event => setExperience(event.target.value)}>
+                    <option value="No Experience">No Experience</option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Expert">Expert</option>
+                </select>
+
+                <input type="submit" name="Submit Button" value="Register" className="registerButton"/>
+            </form>
+        </div>)
 }
