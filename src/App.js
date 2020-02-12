@@ -4,6 +4,7 @@ import './App.css';
 import {Register} from './Register'
 
 function App() {
+  require('dotenv').config();
   return (
 <Router>
   <Switch>
