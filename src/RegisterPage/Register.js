@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { addApplicantFetch } from './apiFetch'
+import { addApplicantFetch } from '../General/apiFetch'
 import './Register.scss';
 
 
