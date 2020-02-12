@@ -8,12 +8,15 @@ function App() {
   return (
 <Router>
   <Switch>
+
     <Route exact path="/">
       <div>Homepage</div>
     </Route>
+
     <Route exact path="/register">
       <Register/>
     </Route>
+
   </Switch>
 </Router>
   );
