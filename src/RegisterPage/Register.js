@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { addApplicantFetch } from '../General/apiFetch'
 import './Register.scss';
 
-
 const fetchState = {
     ERROR: "error",
     FETCHING: "fetching",
@@ -12,13 +11,11 @@ const fetchState = {
 export function Register(){
     const [registerState,setRegisterState]=useState()
 
-    useEffect(() => {},[registerState])
-
         switch(registerState){
             case fetchState.ERROR:
                 return <p>Something went wrong, please try again</p>
             case fetchState.FETCHING:
-                return <div>Sending Application Form</div>
+                return <p>Sending Application Form</p>
             case fetchState.COMPLETE:
                 return (<section>
                             <p>Thank you for submitting an applicaition</p>
