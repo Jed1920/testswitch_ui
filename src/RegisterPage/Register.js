@@ -30,7 +30,7 @@ export function RegistrationForm(props){
     const [name,setName]=useState("")
     const [email,setEmail]=useState("")
     const [contactInfo,setContactInfo]=useState("")
-    const [experience,setExperience]=useState("")
+    const [experience,setExperience]=useState("No Experience")
     
     async function handleSubmit(event){
         event.preventDefault()
@@ -53,16 +53,16 @@ export function RegistrationForm(props){
             <h1>Registration Form</h1>
             <form onSubmit={handleSubmit} className = "registerForm">
                 <label>Name</label>
-                <input type="text" name="Name" onChange={event => setName(event.target.value)}/>
+                <input type="text" data-testid="Name" onChange={event => setName(event.target.value)}/>
 
                 <label>Email</label>
-                <input type="text" name="Email" onChange={event => setEmail(event.target.value)}/>
+                <input type="text" data-testid="Email" onChange={event => setEmail(event.target.value)}/>
 
                 <label>Contact Info</label>
-                <input type="text" name="Contact Info" onChange={event => setContactInfo(event.target.value)}/>
+                <input type="text" data-testid="Contact Info" onChange={event => setContactInfo(event.target.value)}/>
 
                 <label>Experience</label>
-                <select name="Experience" onChange={event => setExperience(event.target.value)}>
+                <select data-testid="Experience" onChange={event => setExperience(event.target.value)}>
                     <option value="No Experience">No Experience</option>
                     <option value="Beginner">Beginner</option>
                     <option value="Intermediate">Intermediate</option>
