@@ -7,3 +7,4 @@ coverage:
 ignore:
   - "src/index.js"
   - "src/serviceWorker.js"
+  - "src/General/mockApiFetch.js"
