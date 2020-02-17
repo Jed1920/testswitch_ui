@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { getFetch } from '../General/apiFetch'
+import './AdminManagement.scss'
 
 const fetchState = {
     ERROR: "error",
@@ -30,7 +31,7 @@ export function AdminManagement(){
 
 function AdminManagementTable(props){
     return (
-    <table data-testid ="Applications Table">
+    <table data-testid ="Applications Table" className = "adminPage">
         <thead>
             <tr>
                 <th>ID</th>
@@ -41,7 +42,7 @@ function AdminManagementTable(props){
             </tr>   
         </thead>
         <tbody>
-            {props.applicantList.map(indivApplicant => <ApplicantRow key = {indivApplicant.id} applicant = {indivApplicant}/> )}
+            {props.applicantList.map(indivApplicant => <ApplicantRow key={indivApplicant.id} applicant={indivApplicant}/> )}
         </tbody>
     </table>
     )
@@ -49,7 +50,7 @@ function AdminManagementTable(props){
 
 function ApplicantRow(props){
     return (
-    <tr>
+    <tr className="applicantRow">
         <td>{props.applicant.id}</td>
         <td>{props.applicant.name}</td>
         <td>{props.applicant.email}</td>
