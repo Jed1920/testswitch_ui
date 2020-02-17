@@ -12,10 +12,8 @@ export function AdminManagement(){
     const [applicantList, setApplicantList] = useState([])
 
     useEffect(() =>{
-        
         setPageState(fetchState.FETCHING)
         getFetch()
-        .then(resp => resp.json())
         .then(json => setApplicantList(json))
         .then(() => setPageState(fetchState.COMPLETE))
         .catch(() => setPageState(fetchState.ERROR))
@@ -25,15 +23,14 @@ export function AdminManagement(){
             case fetchState.ERROR:
                 return <p>Something went wrong, please try again</p>
             case fetchState.FETCHING:
-                return <p>Fetching Data</p>
+                return <p>Fetching data from database</p>
             case fetchState.COMPLETE:
                 return <AdminManagementTable applicantList = {applicantList}/>}
 }
 
-
-export function AdminManagementTable(props){
+function AdminManagementTable(props){
     return (
-    <table>
+    <table data-testid ="Applications Table">
         <thead>
             <tr>
                 <th>ID</th>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render,wait, fireEvent } from '@testing-library/react';
+import { render,wait,fireEvent } from '@testing-library/react';
 import { Register } from './Register';
 import { mockSuccessfulFetch, mockFailedFetch } from '../General/mockApiFetch';
 import * as apiFetch from '../General/apiFetch'
@@ -18,7 +18,7 @@ describe('register page', () => {
     "contactInfo":"043548238123",
     "experience":"No Experience"
   }
-  
+
   test('renders initial form', () => {
       const registerPage = render(<Register/>)
 
