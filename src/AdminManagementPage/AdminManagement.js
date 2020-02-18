@@ -7,6 +7,7 @@ const fetchState = {
     FETCHING: "fetching",
     COMPLETE: "complete"
 }
+const headers ={"id":"ID","name":"Name","email":"Email","contactInfo":"Contact Info","experience":"Experience"}
 
 export function AdminManagement(){
     const [pageState,setPageState]= useState(fetchState.FETCHING)
@@ -32,30 +33,67 @@ export function AdminManagement(){
 function AdminManagementTable(props){
     return (
     <table data-testid ="Applications Table" className = "adminPage">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Contact Info</th>
-                <th>Experience</th>
-            </tr>   
-        </thead>
-        <tbody>
+        <ol>
+            <li className="applicantHeaders">
+                <h3 className="id">ID</h3>
+                <h3 className="name">Name</h3>
+                <h3 className="email">Email</h3>
+                <h3 className="contactInfo">Contact Info</h3>
+                <h3 className="experience">Experience</h3>
+            </li>
             {props.applicantList.map(indivApplicant => <ApplicantRow key={indivApplicant.id} applicant={indivApplicant}/> )}
-        </tbody>
+        </ol>
     </table>
     )
 }
 
 function ApplicantRow(props){
     return (
-    <tr className="applicantRow">
-        <td>{props.applicant.id}</td>
-        <td>{props.applicant.name}</td>
-        <td>{props.applicant.email}</td>
-        <td>{props.applicant.contactInfo}</td>
-        <td>{props.applicant.experience}</td>
-    </tr>
+        <li className="applicantListItem">
+            <div className="applicantListInfo">
+                <p className="id">{props.applicant.id}</p>
+                <p className="name">{props.applicant.name}</p>
+                <p className="email">{props.applicant.email}</p>
+                <p className="contactInfo">{props.applicant.contactInfo}</p>
+                <p className="experience">{props.applicant.experience}</p>
+            </div>
+            <ApplicantButton state = {props.applicant.applicationState}/>
+        </li>
     )
+}
+
+function ApplicantButton(props){
+    switch(props.state){
+        case "NEW":
+            return( 
+                <div className = "buttons">
+                    <button className = "sendButton">Send Test</button>
+                    <button className = "rejectButton">Reject</button>
+                </div>)
+        case "SENT":
+            return ( 
+                <div className = "buttons">
+                    <p className ="testText">Sent</p>
+                    <button className = "rejectButton">Reject</button>
+                </div>)
+        case "EXPIRED":
+            return ( 
+                <div className = "buttons">
+                    <p className ="testText">Expired</p>
+                    <button className = "rejectButton">Reject</button>
+                </div>)
+        case "COMPLETED":
+            return ( 
+                <div className = "buttons">
+                    <p className ="testText">Completed</p>
+                    <button className = "rejectButton">Reject</button>
+                    <button className = "acceptButton">Accept</button>
+                </div>)
+        case "REJECTED":
+            return <p className ="testText">Rejected</p>
+        case "ACCEPTED":
+            return <p className ="testText">Accepted</p>
+
+    }
+    return <div></div>
 }
