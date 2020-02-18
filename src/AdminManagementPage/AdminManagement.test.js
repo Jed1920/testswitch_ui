@@ -1,9 +1,9 @@
 import React from 'react';
 import { render,wait } from '@testing-library/react';
-import { AdminManagement } from "./AdminManagement";
+import { AdminManagement, ApplicantButton } from "./AdminManagement";
 import { mockSuccessfulFetch, mockFailedFetch } from "../General/mockApiFetch";
 
-describe('register page', () => {
+describe('admin page', () => {
 
     afterEach(() => {
         // @ts-ignore
@@ -18,21 +18,21 @@ describe('register page', () => {
             "name": "qwewedf",
             "email": "adfdhgffe",
             "contactInfo": "adsfdgbda",
-            "experience": "fdagdsaf"
+            "experience": "BEGINNER"
         },
         {
             "id": 2,
             "name": "cvbxcb",
             "email": "nbcvbm",
             "contactInfo": "htreahg",
-            "experience": "ncbvnghn"
+            "experience": "INTERMEDIATE"
         },
         {
             "id": 3,
             "name": "bvnbxg",
             "email": "sadgfg",
             "contactInfo": "fasfgdb",
-            "experience": "bvxbsdf"
+            "experience": "NONE"
         }
     ])
 
@@ -61,4 +61,49 @@ describe('register page', () => {
         await wait(()=> expect(adminPage.queryByText(applicationList[1].name)).toBeInTheDocument());
         await wait(()=> expect(adminPage.queryByText(applicationList[2].name)).toBeInTheDocument());
       });
+})
+
+describe('application test buttons', () => {
+
+    test('NEW application', () => {
+        const adminPage = render(<ApplicantButton state="NEW"/>)
+  
+        expect(adminPage.getByText("Send Test")).toBeInTheDocument(); 
+        expect(adminPage.queryByText("Reject")).toBeInTheDocument(); 
+      });
+
+    test('SENT application', () => {
+        const adminPage = render(<ApplicantButton state="SENT"/>)
+  
+        expect(adminPage.queryByText("Sent")).toBeInTheDocument(); 
+        expect(adminPage.queryByText("Reject")).toBeInTheDocument(); 
+      });
+
+    test('EXPIRED application', () => {
+        const adminPage = render(<ApplicantButton state="EXPIRED"/>)
+  
+        expect(adminPage.queryByText("Expired")).toBeInTheDocument(); 
+        expect(adminPage.queryByText("Reject")).toBeInTheDocument(); 
+      });
+
+    test('COMPLETED application', () => {
+        const adminPage = render(<ApplicantButton state="COMPLETED"/>)
+  
+        expect(adminPage.queryByText("Completed")).toBeInTheDocument(); 
+        expect(adminPage.queryByText("Accept")).toBeInTheDocument(); 
+        expect(adminPage.queryByText("Reject")).toBeInTheDocument(); 
+      });
+
+    test('REJECTED application', () => {
+        const adminPage = render(<ApplicantButton state="REJECTED"/>)
+  
+        expect(adminPage.queryByText("Rejected")).toBeInTheDocument(); 
+      });
+
+    test('ACCEPTED application', () => {
+        const adminPage = render(<ApplicantButton state="ACCEPTED"/>)
+  
+        expect(adminPage.queryByText("Accepted")).toBeInTheDocument(); 
+      });
+
 })

@@ -62,7 +62,7 @@ function ApplicantRow(props){
     )
 }
 
-function ApplicantButton(props){
+export function ApplicantButton(props){
     switch(props.state){
         case "NEW":
             return( 
