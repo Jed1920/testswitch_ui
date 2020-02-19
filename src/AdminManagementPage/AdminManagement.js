@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { getFetch } from '../General/apiFetch'
+import { ApplicantButton, listAction } from './ApplicationState'
 import './AdminManagement.scss'
 
 const fetchState = {
@@ -7,19 +8,20 @@ const fetchState = {
     FETCHING: "fetching",
     COMPLETE: "complete"
 }
-const headers ={"id":"ID","name":"Name","email":"Email","contactInfo":"Contact Info","experience":"Experience"}
 
-export function AdminManagement(){
+export function AdminManagement(props){
     const [pageState,setPageState]= useState(fetchState.FETCHING)
     const [applicantList, setApplicantList] = useState([])
+    const [updateList, setUpdateList] = useState(listAction.NO_UPDATE)
 
     useEffect(() =>{
+        console.log(updateList)
         setPageState(fetchState.FETCHING)
-        getFetch()
+        getFetch("/application/get_all")
         .then(json => setApplicantList(json))
         .then(() => setPageState(fetchState.COMPLETE))
         .catch(() => setPageState(fetchState.ERROR))
-    },[])
+    },[updateList])
           
         switch(pageState){
             case fetchState.ERROR:
@@ -27,7 +29,7 @@ export function AdminManagement(){
             case fetchState.FETCHING:
                 return <p>Fetching data from database</p>
             case fetchState.COMPLETE:
-                return <AdminManagementTable applicantList = {applicantList}/>}
+                return <AdminManagementTable applicantList = {applicantList} setUpdateList = {setUpdateList}/>}
 }
 
 function AdminManagementTable(props){
@@ -41,7 +43,7 @@ function AdminManagementTable(props){
                 <h3 className="contactInfo">Contact Info</h3>
                 <h3 className="experience">Experience</h3>
             </li>
-            {props.applicantList.map(indivApplicant => <ApplicantRow key={indivApplicant.id} applicant={indivApplicant}/> )}
+            {props.applicantList.map(indivApplicant => <ApplicantRow key={indivApplicant.id} applicant={indivApplicant} subscribesTo = {props.subscribesTo} setUpdateList = {props.setUpdateList}/> )}
         </ol>
     </table>
     )
@@ -57,43 +59,7 @@ function ApplicantRow(props){
                 <p className="contactInfo">{props.applicant.contactInfo}</p>
                 <p className="experience">{props.applicant.experience}</p>
             </div>
-            <ApplicantButton state = {props.applicant.applicationState}/>
+            <ApplicantButton applicant = {props.applicant} subscribesTo = {props.subscribesTo} setUpdateList = {props.setUpdateList}/>
         </li>
     )
-}
-
-export function ApplicantButton(props){
-    switch(props.state){
-        case "NEW":
-            return( 
-                <div className = "buttons">
-                    <button className = "sendButton">Send Test</button>
-                    <button className = "rejectButton">Reject</button>
-                </div>)
-        case "SENT":
-            return ( 
-                <div className = "buttons">
-                    <p className ="testText">Sent</p>
-                    <button className = "rejectButton">Reject</button>
-                </div>)
-        case "EXPIRED":
-            return ( 
-                <div className = "buttons">
-                    <p className ="testText">Expired</p>
-                    <button className = "rejectButton">Reject</button>
-                </div>)
-        case "COMPLETED":
-            return ( 
-                <div className = "buttons">
-                    <p className ="testText">Completed</p>
-                    <button className = "rejectButton">Reject</button>
-                    <button className = "acceptButton">Accept</button>
-                </div>)
-        case "REJECTED":
-            return <p className ="testText">Rejected</p>
-        case "ACCEPTED":
-            return <p className ="testText">Accepted</p>
-
-    }
-    return <div></div>
 }
