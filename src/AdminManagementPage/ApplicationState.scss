@@ -1,0 +1,36 @@
+.adminPage{
+    
+    .buttons{
+        display: inline-block;
+       
+    }
+    button{
+        padding-top:7px;
+        padding-bottom:6px;
+        font-size: large;
+        margin-left: 10px;
+        margin-right: 10px;
+        width:100px;
+        border-radius: 10px;
+    }
+    .sendButton{
+        color: #42adf5;
+        background-color: white;
+        border: 2px solid #42adf5;;
+    }
+    .rejectButton{
+        background-color: red;
+        border: none;
+        font-size: large;
+        color:white;
+    }
+    .acceptButton{
+        background-color: green;
+        border: none;
+        font-size: large;
+        color:white;
+    }
+    .testText{
+        width:108px;
+    }
+}
