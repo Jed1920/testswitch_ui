@@ -43,7 +43,7 @@ function AdminManagementTable(props){
                 <h3 className="contactInfo">Contact Info</h3>
                 <h3 className="experience">Experience</h3>
             </li>
-            {props.applicantList.map(indivApplicant => <ApplicantRow key={indivApplicant.id} applicant={indivApplicant} subscribesTo = {props.subscribesTo} setUpdateList = {props.setUpdateList}/> )}
+            {props.applicantList.map(indivApplicant => <ApplicantRow key={indivApplicant.id} applicant={indivApplicant} setUpdateList = {props.setUpdateList}/> )}
         </ol>
     </table>
     )
@@ -59,7 +59,7 @@ function ApplicantRow(props){
                 <p className="contactInfo">{props.applicant.contactInfo}</p>
                 <p className="experience">{props.applicant.experience}</p>
             </div>
-            <ApplicantButton applicant = {props.applicant} subscribesTo = {props.subscribesTo} setUpdateList = {props.setUpdateList}/>
+            <ApplicantButton applicant = {props.applicant} setUpdateList = {props.setUpdateList}/>
         </li>
     )
 }
