@@ -16,7 +16,7 @@ describe('register page', () => {
     "name":"James Cameron",
     "email":"jamesCam@pand.ora",
     "contactInfo":"043548238123",
-    "experience":"No Experience"
+    "experience":"NONE"
   }
 
   test('renders initial form', () => {
@@ -59,7 +59,7 @@ describe('register page', () => {
       fireEvent.change(registerPage.getByTestId("Name"),{target: { value: 'Brian May'}})
       fireEvent.change(registerPage.getByTestId("Email"),{target: { value: 'brianM@guitar.que'}})
       fireEvent.change(registerPage.getByTestId("Contact Info"),{target: { value: '0210239953'}})
-      fireEvent.change(registerPage.getByTestId("Experience"),{target: { value: "Intermediate"}})
+      fireEvent.change(registerPage.getByTestId("Experience"),{target: { value: "INTERMEDIATE"}})
 
       fireEvent.click(registerPage.getByText("Register"))
       let formData = (args[0])[0]
@@ -67,6 +67,6 @@ describe('register page', () => {
       expect(formData.getAll("name")[0]).toBe('Brian May')
       expect(formData.getAll("email")[0]).toBe('brianM@guitar.que')
       expect(formData.getAll("contactInfo")[0]).toBe('0210239953')
-      expect(formData.getAll("experience")[0]).toBe('Intermediate')
+      expect(formData.getAll("experience")[0]).toBe('INTERMEDIATE')
     });
 });
