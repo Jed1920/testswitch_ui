@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { addApplicantFetch } from '../General/apiFetch'
 import './Register.scss';
 
@@ -30,7 +30,7 @@ export function RegistrationForm(props){
     const [name,setName]=useState("")
     const [email,setEmail]=useState("")
     const [contactInfo,setContactInfo]=useState("")
-    const [experience,setExperience]=useState("No Experience")
+    const [experience,setExperience]=useState("NONE")
     
     async function handleSubmit(event){
         event.preventDefault()
@@ -63,10 +63,10 @@ export function RegistrationForm(props){
 
                 <label>Experience</label>
                 <select data-testid="Experience" onChange={event => setExperience(event.target.value)}>
-                    <option value="No Experience">No Experience</option>
-                    <option value="Beginner">Beginner</option>
-                    <option value="Intermediate">Intermediate</option>
-                    <option value="Expert">Expert</option>
+                    <option value="NONE">No Experience</option>
+                    <option value="BEGINNER">Beginner</option>
+                    <option value="INTERMEDIATE">Intermediate</option>
+                    <option value="EXPERT">Expert</option>
                 </select>
 
                 <input type="submit" name="Submit Button" value="Register" className="registerButton"/>
