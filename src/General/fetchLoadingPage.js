@@ -9,20 +9,39 @@ const fetchState = {
 
 export function LoadingPage(props){
     const [pageState,setPageState]= useState(fetchState.FETCHING)
+    const [status,setStatus]=useState()
+    console.log(props.subscribesTo[0])
 
-    useEffect(() =>{
-        setPageState(fetchState.FETCHING)
-        getFetch(props.url)
-        .then(json => props.setResponse(json))
-        .then(() => setPageState(fetchState.COMPLETE))
-        .catch(() => setPageState(fetchState.ERROR))
+    useEffect(() =>  {
+        async function fetchData() {
+            setPageState(fetchState.FETCHING)
+            console.log(props.subscribesTo[0])
+
+            try{
+                let response = await getFetch(props.url)
+                setStatus(await response.status)
+                let json = await response.json()
+                props.setResponse(json)
+                setPageState(fetchState.COMPLETE)
+            } catch {
+                setPageState(fetchState.ERROR)
+            }
+        }
+        fetchData()
     },props.subscribesTo || [])
           
         switch(pageState){
+
             case fetchState.ERROR:
-                return <p>Something went wrong, please try again</p>
+                return (
+                    <div>
+                        <p>Status {status}</p>
+                        <p>Something went wrong</p>
+                    </div>)
+
             case fetchState.FETCHING:
                 return <p>Fetching data from database</p>
+
             case fetchState.COMPLETE:
                 return props.children}
 }
