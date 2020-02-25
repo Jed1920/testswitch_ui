@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { getFetch } from '../General/apiFetch'
-import { AdminManagementTable } from'../AdminManagementPage/AdminManagement'
-import { ApplicantButton, listAction } from '../AdminManagementPage/ApplicationState'
 
 const fetchState = {
     ERROR: "error",
