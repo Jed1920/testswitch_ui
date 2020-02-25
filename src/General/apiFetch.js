@@ -12,5 +12,6 @@ export async function getFetch(stringUrl){
     var url = `${process.env.REACT_APP_API_URL}${stringUrl}`
     const response = await fetch(url)
     const json = await response.json()
+    console.log(await json)
     return await json
 }

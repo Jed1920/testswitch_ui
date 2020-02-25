@@ -23,7 +23,7 @@ function App() {
       <AdminManagement/>
     </Route>
 
-    <Route path="/test">
+    <Route path="/test/:idString">
       <ApplicantTest/>
     </Route>
 
