@@ -6,10 +6,9 @@ import { LoadingPage } from '../General/fetchLoadingPage'
 export function AdminManagement(){
     const [applicantList, setApplicantList] = useState([])
     const [updateList, setUpdateList] = useState(listAction.NO_UPDATE)
-    let subscribesTo = [updateList]
 
     return(
-        <LoadingPage setResponse = {setApplicantList} subscribesTo={subscribesTo} url = "/application/get_all">
+        <LoadingPage setResponse = {setApplicantList} subscribesTo={[updateList]} url = "/application/get_all">
             <AdminManagementTable applicantList = {applicantList} setUpdateList = {setUpdateList}/>      
         </LoadingPage>
     )
