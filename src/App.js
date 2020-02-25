@@ -3,6 +3,7 @@ import { BrowserRouter as Router,Switch,Route } from 'react-router-dom';
 import './App.css';
 import {Register} from './RegisterPage/Register'
 import { AdminManagement } from './AdminManagementPage/AdminManagement';
+import { ApplicantTest } from './TestPage/ApplicantTest';
 
 function App() {
   require('dotenv').config();
@@ -20,6 +21,10 @@ function App() {
 
     <Route exact path="/admin">
       <AdminManagement/>
+    </Route>
+
+    <Route path="/test">
+      <ApplicantTest/>
     </Route>
 
   </Switch>
