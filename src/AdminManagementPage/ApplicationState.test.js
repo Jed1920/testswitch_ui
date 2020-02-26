@@ -1,10 +1,9 @@
 import React from 'react';
 import { render,fireEvent } from '@testing-library/react';
-import { AdminManagement } from "./AdminManagement";
 import { ApplicantButton } from './ApplicationState';
-import { applicationList } from './fakeApplicationList';
+import { applicationList } from '../General/mockedFetchData';
 import * as apiFetch from '../General/apiFetch'
-import { mockSuccessfulFetch, mockFailedFetch } from "../General/mockApiFetch";
+import { mockSuccessfulFetch } from "../General/mockApiFetch";
 
 describe('application test buttons', () => {
 

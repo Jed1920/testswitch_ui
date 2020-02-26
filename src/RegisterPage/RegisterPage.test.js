@@ -2,6 +2,7 @@ import React from 'react';
 import { render,wait,fireEvent } from '@testing-library/react';
 import { Register } from './Register';
 import { mockSuccessfulFetch, mockFailedFetch } from '../General/mockApiFetch';
+import { applicant } from '../General/mockedFetchData';
 import * as apiFetch from '../General/apiFetch'
 
 describe('register page', () => {
@@ -10,15 +11,7 @@ describe('register page', () => {
     // @ts-ignore
     global.fetch.resetMocks()
     })
-
-  const fakeResponse ={
-    "id":1,
-    "name":"James Cameron",
-    "email":"jamesCam@pand.ora",
-    "contactInfo":"043548238123",
-    "experience":"NONE"
-  }
-
+    
   test('renders initial form', () => {
       const registerPage = render(<Register/>)
 
@@ -45,7 +38,7 @@ describe('register page', () => {
 
   test('renders successful response', async () => {
       const registerPage = render(<Register/>)
-      mockSuccessfulFetch(fakeResponse)
+      mockSuccessfulFetch(applicant)
       fireEvent.click(registerPage.getByText("Register"))
       await wait(()=> expect(registerPage.queryByText("Thank you for submitting an applicaition")).toBeInTheDocument());
       await wait(()=> expect(registerPage.queryByText("We will be in touch shortly about the next steps")).toBeInTheDocument());

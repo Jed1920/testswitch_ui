@@ -2,8 +2,8 @@ import React from 'react';
 import { render,wait } from '@testing-library/react';
 import { AdminManagement } from "./AdminManagement";
 import { ApplicantButton } from './ApplicationState';
-import { applicationList } from './fakeApplicationList';
-import { mockSuccessfulFetch, mockFailedFetch } from "../General/mockApiFetch";
+import { applicationList } from '../General/mockedFetchData';
+import { mockSuccessfulFetch } from "../General/mockApiFetch";
 
 describe('admin page', () => {
 

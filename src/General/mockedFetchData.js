@@ -1,4 +1,12 @@
-export const applicationList =(
+export const applicant ={
+    "id":1,
+    "name":"James Cameron",
+    "email":"jamesCam@pand.ora",
+    "contactInfo":"043548238123",
+    "experience":"NONE"
+  }
+
+  export const applicationList =(
          
     [
         {
