@@ -10,22 +10,7 @@ describe('admin page', () => {
     afterEach(() => {
         // @ts-ignore
         global.fetch.resetMocks()
-        })
-
-    test('renders error response', async () => {
-        mockFailedFetch()
-        const adminPage = render(<AdminManagement/>)
-        
-        await wait(()=> expect(adminPage.queryByText("Something went wrong, please try again")).toBeInTheDocument());
-      });
-
-
-    test('renders waiting response', () => {
-        const adminPage = render(<AdminManagement/>)
-  
-        expect(adminPage.queryByText("Fetching data from database")).toBeInTheDocument();
-      });
-   
+        })   
       
     test('renders mock response data', async () => {
 

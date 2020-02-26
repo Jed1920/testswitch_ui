@@ -10,13 +10,10 @@ const fetchState = {
 export function LoadingPage(props){
     const [pageState,setPageState]= useState(fetchState.FETCHING)
     const [status,setStatus]=useState()
-    console.log(props.subscribesTo[0])
 
     useEffect(() =>  {
         async function fetchData() {
             setPageState(fetchState.FETCHING)
-            console.log(props.subscribesTo[0])
-
             try{
                 let response = await getFetch(props.url)
                 setStatus(await response.status)
