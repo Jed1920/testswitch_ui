@@ -13,7 +13,6 @@ export function ApplicantButton(props){
 
     async function handleClick(state){
         props.setUpdateList(listAction.UPDATE)
-        console.log(`${props.applicant.id}/${state}`)
         await getFetch(`/application/change_state/${props.applicant.id}/${state}`)
     }
 

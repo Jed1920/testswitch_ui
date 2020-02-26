@@ -1,38 +1,20 @@
-import React, { useState, useEffect } from 'react'
-import { getFetch } from '../General/apiFetch'
+import React, { useState } from 'react'
 import { ApplicantButton, listAction } from './ApplicationState'
 import './AdminManagement.scss'
+import { LoadingPage } from '../General/fetchLoadingPage'
 
-const fetchState = {
-    ERROR: "error",
-    FETCHING: "fetching",
-    COMPLETE: "complete"
-}
-
-export function AdminManagement(props){
-    const [pageState,setPageState]= useState(fetchState.FETCHING)
+export function AdminManagement(){
     const [applicantList, setApplicantList] = useState([])
     const [updateList, setUpdateList] = useState(listAction.NO_UPDATE)
 
-    useEffect(() =>{
-        console.log(updateList)
-        setPageState(fetchState.FETCHING)
-        getFetch("/application/get_all")
-        .then(json => setApplicantList(json))
-        .then(() => setPageState(fetchState.COMPLETE))
-        .catch(() => setPageState(fetchState.ERROR))
-    },[updateList])
-          
-        switch(pageState){
-            case fetchState.ERROR:
-                return <p>Something went wrong, please try again</p>
-            case fetchState.FETCHING:
-                return <p>Fetching data from database</p>
-            case fetchState.COMPLETE:
-                return <AdminManagementTable applicantList = {applicantList} setUpdateList = {setUpdateList}/>}
+    return(
+        <LoadingPage setResponse = {setApplicantList} subscribesTo={[updateList]} url = "/application/get_all">
+            <AdminManagementTable applicantList = {applicantList} setUpdateList = {setUpdateList}/>      
+        </LoadingPage>
+    )
 }
 
-function AdminManagementTable(props){
+export function AdminManagementTable(props){
     return (
     <table data-testid ="Applications Table" className = "adminPage">
         <ol>

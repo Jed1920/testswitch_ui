@@ -2,30 +2,15 @@ import React from 'react';
 import { render,wait } from '@testing-library/react';
 import { AdminManagement } from "./AdminManagement";
 import { ApplicantButton } from './ApplicationState';
-import { applicationList } from './fakeApplicationList';
-import { mockSuccessfulFetch, mockFailedFetch } from "../General/mockApiFetch";
+import { applicationList } from '../General/mockedFetchData';
+import { mockSuccessfulFetch } from "../General/mockApiFetch";
 
 describe('admin page', () => {
 
     afterEach(() => {
         // @ts-ignore
         global.fetch.resetMocks()
-        })
-
-    test('renders error response', async () => {
-        mockFailedFetch()
-        const adminPage = render(<AdminManagement/>)
-        
-        await wait(()=> expect(adminPage.queryByText("Something went wrong, please try again")).toBeInTheDocument());
-      });
-
-
-    test('renders waiting response', () => {
-        const adminPage = render(<AdminManagement/>)
-  
-        expect(adminPage.queryByText("Fetching data from database")).toBeInTheDocument();
-      });
-   
+        })   
       
     test('renders mock response data', async () => {
 
