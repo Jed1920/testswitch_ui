@@ -6,7 +6,6 @@ import { LoadingPage } from '../General/fetchLoadingPage';
 export function ApplicantTest(){
     const[applicant,setApplicant] = useState()
     let { idString } = useParams();
-    console.log(applicant)
 
     return(
         <LoadingPage setResponse = {setApplicant} url = {`/application/test/${idString}`}>
@@ -15,7 +14,7 @@ export function ApplicantTest(){
     )
 }
 
-function ApplicantTestPage(props){
+export function ApplicantTestPage(props){
 
     switch(props.applicant.applicationState){
         case "SENT":
