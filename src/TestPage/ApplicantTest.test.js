@@ -1,5 +1,5 @@
 import React from 'react'
-import { render,wait } from '@testing-library/react';
+import { render,wait, fireEvent } from '@testing-library/react';
 import { ApplicantTest } from './ApplicantTest';
 import { applicationList } from '../General/mockedFetchData'
 import { mockSuccessfulFetch } from '../General/mockApiFetch';
@@ -12,7 +12,7 @@ describe('test page component', () => {
         global.fetch.resetMocks()
         })
 
-    test('test whole page component', async () => {
+    test('valid correct url string', async () => {
         mockSuccessfulFetch(applicationList[1])
         const testPage = render(
         <MemoryRouter initialEntries={["/test/random_test_string"]}>
@@ -33,6 +33,23 @@ describe('test page component', () => {
 
         await wait(() => expect(testPage.getByText(`Welcome back ${applicationList[2].name}`)).toBeInTheDocument())
         await wait(() => expect(testPage.queryByText(applicationList[2].applicationState)).toBeInTheDocument())
+        }
+    )    
+
+    test('test submission button', async () => {
+        const fetch = jest.spyOn(global, 'fetch');
+
+        mockSuccessfulFetch(applicationList[1])
+        const testPage = render(
+        <MemoryRouter initialEntries={["/test/random_test_string"]}>
+            <ApplicantTest/>
+        </MemoryRouter>)
+
+        expect(fetch).toHaveBeenCalledTimes(1)
+
+        await wait(() => fireEvent.click(testPage.getByText("Submit")))
+
+        await wait(() => expect(fetch).toHaveBeenCalledTimes(3))
         }
     )    
 })
