@@ -12,8 +12,8 @@ export function ApplicantButton(props){
     props.setUpdateList(listAction.NO_UPDATE)
 
     async function handleClick(state){
-        props.setUpdateList(listAction.UPDATE)
         await getFetch(`/application/change_state/${props.applicant.id}/${state}`)
+        props.setUpdateList(listAction.UPDATE)
     }
 
     switch(props.applicant.applicationState){
@@ -49,3 +49,4 @@ export function ApplicantButton(props){
 
     }
 }
+
