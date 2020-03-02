@@ -31,6 +31,8 @@ export function RegistrationForm(props){
     const [email,setEmail]=useState("")
     const [contactInfo,setContactInfo]=useState("")
     const [experience,setExperience]=useState("NONE")
+    const [cv,setCv]=useState()
+    console.log(cv)
     
     async function handleSubmit(event){
         event.preventDefault()
@@ -40,6 +42,7 @@ export function RegistrationForm(props){
         formData.append("email",email)
         formData.append("contactInfo",contactInfo)
         formData.append("experience",experience)
+        formData.append("cvFile",cv)
         try {
             props.setPageState(fetchState.FETCHING)
             await addApplicantFetch(formData)
@@ -61,6 +64,8 @@ export function RegistrationForm(props){
                 <label>Contact Info</label>
                 <input type="text" data-testid="Contact Info" onChange={event => setContactInfo(event.target.value)}/>
 
+                <input type="file" data-testid="CV File" onChange={event => setCv(event.target.files[0])}/>
+
                 <label>Experience</label>
                 <select data-testid="Experience" onChange={event => setExperience(event.target.value)}>
                     <option value="NONE">No Experience</option>
@@ -70,6 +75,7 @@ export function RegistrationForm(props){
                 </select>
 
                 <input type="submit" name="Submit Button" value="Register" className="registerButton"/>
+                
             </form>
         </div>)
 }
