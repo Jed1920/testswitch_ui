@@ -1,0 +1,41 @@
+@import '../General/GlobalStylings.scss';
+
+.navbar{
+    background-color:$dark-grey-color;
+    
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    // padding:10px;
+
+    .link{
+        color:$orange-color;
+        text-decoration: none;
+        margin:20px;
+        font-family: 'Rubik', sans-serif;
+        font-size: 30px;
+
+        &:hover{
+            color:grey;
+            
+        }
+    }
+    .home{
+        font-size: 40px;
+        font-weight: 700;
+        
+    }
+
+    .register{
+
+    }
+
+    .admin{
+
+    }
+}
