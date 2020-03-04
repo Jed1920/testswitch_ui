@@ -1,52 +1,48 @@
-.adminPage{
-    font-family: 'Rubik', sans-serif;
-    font-size: 20px;
-    margin-top:50px;
-    
-    ol{
-        
-        display: inline-block;
-        padding-inline-start: 0px;
-    }
+@import '../General/GlobalStylings.scss';
 
-    .applicantHeaders{
-        list-style:none;
-        color:#1a4562;
-        h3{
-            padding-left: 12px;
-            text-align: center;
-            display: inline-block;
+.adminPage{
+    margin-top:80px;
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+    
+    .applicationRow{
+        &:hover{
+            background-color: rgba($table-grey-color,1);
         }
     }
 
-    .applicantListInfo{
-        list-style:none;
-        border: 3px solid white;
-        border-radius: 15px;  
-        color:white;
-        background-color:#42adf5;
-        display: inline-block;
+    tr{
+        background-color: rgba($table-grey-color,0.8);
+        height:50px;
     }
-    .applicantListItem{
-        display: inline-block;
-        margin-top: 5px;
-        margin-bottom: 5px;
+
+    th{
+        background-color: $white-color;
+        color:$dark-grey-color;
+        font-family: $header-text;
+        font-size: 25px;
+        text-align: center;
     }
-    p{
-        display: inline-block;
-        border-left: 2px solid white;
+
+    td{
+        color:$white-color;
+        font-family: $body-text;
+        font-size: 20px;
+        border-top: 2px solid $white-color;
+        border-bottom: 2px solid $white-color;
+        border-collapse: collapse;
         padding-left: 10px;
-        margin-top:0px;
-        margin-bottom:0px;
-        padding-top:5px;
-        padding-bottom:5px;
     }
     .id{
         padding-left: 0px;
-        border: none;
         text-align: center;
         width:50px;
     }
+    .idRow{
+            font-size: 25px;
+            font-weight: 600;
+        }
     .name{
         width:200px;
     }
@@ -61,8 +57,28 @@
     }
     .cv{
         padding-left: 0px;
-        border-right: none;
         text-align: center;
-        width:100px;
+        width:140px;
+    }
+
+    .cvButton{
+        background-color: $dark-grey-color;
+        text-align: center;
+        padding: 0;
+        button{
+            text-align: center;
+            color:$white-color;
+            font-family: $body-text;
+            font-size: 20px;
+            border: none;
+            background-color: transparent;
+        }
+        &:hover{
+            background-color: rgba($dark-grey-color,0.7);
+        }
+    }
+    .applicantButton{
+        background-color: $white-color;
+        padding-left: 0;
     }
 }

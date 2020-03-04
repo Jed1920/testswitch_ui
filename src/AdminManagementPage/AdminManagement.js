@@ -18,40 +18,63 @@ export function AdminManagement(){
 export function AdminManagementTable(props){
     return (
     <table data-testid ="Applications Table" className = "adminPage">
-        <ol>
-            <li className="applicantHeaders">
-                <h3 className="id">ID</h3>
-                <h3 className="name">Name</h3>
-                <h3 className="email">Email</h3>
-                <h3 className="contactInfo">Contact Info</h3>
-                <h3 className="experience">Experience</h3>
-                <h3 className="cv">CV</h3>
-            </li>
-            {props.applicantList.map(indivApplicant => <ApplicantRow key={indivApplicant.id} applicant={indivApplicant} setUpdateList = {props.setUpdateList}/> )}
-        </ol>
+            <tr className="applicantHeaders">
+                <th className="id">ID</th>
+                <th className="name">Name</th>
+                <th className="email">Email</th>
+                <th className="contactInfo">Contact Info</th>
+                <th className="experience">Experience</th>
+                <th className="cv">CV</th>
+            </tr>
+            {props.applicantList.map(indivApplicant => <ApplicantRow key={indivApplicant.id} applicant={indivApplicant} setUpdateList = {props.setUpdateList}/>)}
     </table>
     )
 }
 
 function ApplicantRow(props){
-    return (
-        <li className="applicantListItem">
-            <div className="applicantListInfo">
-                <p className="id">{props.applicant.id}</p>
-                <p className="name">{props.applicant.name}</p>
-                <p className="email">{props.applicant.email}</p>
-                <p className="contactInfo">{props.applicant.contactInfo}</p>
-                <p className="experience">{props.applicant.experience}</p>
-                <CvLink applicant = {props.applicant}/>
-                {/* <p className="cv">{props.applicant.cv.toString()}</p> */}
-            </div>
-            <ApplicantButton applicant = {props.applicant} setUpdateList = {props.setUpdateList}/>
-        </li>
-    )
+    const [cvButton,setCvButton] = useState(false)
+    const [buttons,setButtons] = useState(false)
+
+    function handleClick(){
+        if(cvButton == false){
+            setButtons(buttons == false)
+        }
+    }
+
+    switch(buttons){
+
+        case true :
+            return (
+                <tbody>
+                    <tr className="applicationRow" onClick={handleClick}>
+                        <td className="id idRow">{props.applicant.id}</td>
+                        <td className="name">{props.applicant.name}</td>
+                        <td className="email">{props.applicant.email}</td>
+                        <td className="contactInfo">{props.applicant.contactInfo}</td>
+                        <td className="experience">{props.applicant.experience}</td>
+                        <CvLink applicant = {props.applicant}/>
+                    </tr>    
+                    <tr  className="applicationRow">
+                        <td colspan="6"className="applicantButton"><ApplicantButton applicant = {props.applicant} setUpdateList = {props.setUpdateList}/></td>
+                    </tr>
+                </tbody>
+                    )
+
+        case false :
+            return (
+                <tr className="applicationRow" onClick={handleClick}>
+                    <td className="id idRow">{props.applicant.id}</td>
+                    <td className="name">{props.applicant.name}</td>
+                    <td className="email">{props.applicant.email}</td>
+                    <td className="contactInfo">{props.applicant.contactInfo}</td>
+                    <td className="experience">{props.applicant.experience}</td>
+                    <CvLink applicant = {props.applicant}/>
+                </tr>
+                )
+    }
 }
 
 export function CvLink(props){
-    console.log(`${props.applicant.name} ${props.applicant.cv}`)
 
     async function handleClick(){
         let keyName = `${props.applicant.id}_${props.applicant.name.replace(" ","_")}`
@@ -66,8 +89,8 @@ export function CvLink(props){
     switch (props.applicant.cv){
         
         case true :
-            return <button onClick ={handleClick}>CV</button>
+            return <td className="cvButton" onClick = {handleClick}>View</td>
         case false : 
-            return <p className="cv">N/A</p>
+            return <td className="cv">N/A</td>
     }
 }

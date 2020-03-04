@@ -1,36 +1,58 @@
+@import '../General/GlobalStylings.scss';
+
 .adminPage{
-    
+    background-color: white;
+
     .buttons{
-        display: inline-block;
-       
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+
+        td{
+            text-align: center;
+            border:none;
+            width:250px;
+            color:$dark-grey-color;
+        } 
     }
+    .text{
+        width: 20%;
+    }
+    .complete{
+        width: 50%;
+    }
+
     button{
-        padding-top:7px;
-        padding-bottom:6px;
-        font-size: large;
-        margin-left: 10px;
-        margin-right: 10px;
-        width:100px;
+        padding-top:8px;
+        padding-bottom:8px;
+        font-size: 20px;
+        width:100%;
         border-radius: 10px;
+        border:2px solid $orange-color;
+        background-color: $table-grey-color;
+        color: $white-color;
+        width:120px;
+        &:hover{
+            color: $orange-color;
+            background-color: $white-color;
+        }
     }
-    .sendButton{
-        color: #42adf5;
-        background-color: white;
-        border: 2px solid #42adf5;;
-    }
+
     .rejectButton{
-        background-color: red;
-        border: none;
-        font-size: large;
-        color:white;
+        width:120px;
+        &:hover{
+            color: red;
+            border: 2px solid red;
+        }
+        
     }
     .acceptButton{
-        background-color: green;
-        border: none;
-        font-size: large;
-        color:white;
+        &:hover{
+            color: green;
+            border: 2px solid green;
+        }
     }
     .testText{
-        width:108px;
+        // width:108px;
     }
 }

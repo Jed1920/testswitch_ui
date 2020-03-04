@@ -20,32 +20,32 @@ export function ApplicantButton(props){
         case "NEW":
             return( 
                 <div className = "buttons">
-                    <button className = "sendButton" onClick={()=>{handleClick("SENT")}}>Send Test</button>
-                    <button className = "rejectButton" onClick={()=>{handleClick("REJECTED")}}>Reject</button>
+                    <td><button className = "sendButton" onClick={()=>{handleClick("SENT")}}>Send Test</button></td>
+                    <td><button className = "rejectButton" onClick={()=>{handleClick("REJECTED")}}>Reject</button></td>
                 </div>)
         case "SENT":
             return ( 
                 <div className = "buttons">
-                    <p className ="testText">Sent</p>
-                    <button className = "rejectButton" onClick={()=>{handleClick("REJECTED")}}>Reject</button>
+                    <td>Test Sent</td>
+                    <td><button className = "rejectButton" onClick={()=>{handleClick("REJECTED")}}>Reject</button></td>
                 </div>)
         case "EXPIRED":
             return ( 
                 <div className = "buttons">
-                    <p className ="testText">Expired</p>
-                    <button className = "rejectButton" onClick={()=>{handleClick("REJECTED")}}>Reject</button>
+                    <td>Test Expired</td>
+                    <td><button className = "rejectButton" onClick={()=>{handleClick("REJECTED")}}>Reject</button></td>
                 </div>)
         case "COMPLETED":
             return ( 
-                <div className = "buttons">
-                    <p className ="testText">Completed</p>
-                    <button className = "rejectButton" onClick={()=>{handleClick("REJECTED")}}>Reject</button>
-                    <button className = "acceptButton" onClick={()=>{handleClick("ACCEPTED")}}>Accept</button>
+                <div className = "buttons complete">
+                    <td>Test Complete</td>
+                    <td><button className = "rejectButton" onClick={()=>{handleClick("REJECTED")}}>Reject</button></td>
+                    <td><button className = "acceptButton" onClick={()=>{handleClick("ACCEPTED")}}>Accept</button></td>
                 </div>)
         case "REJECTED":
-            return <p className ="testText">Rejected</p>
+            return <div className = "buttons text"><td>Application Rejected</td></div>
         case "ACCEPTED":
-            return <p className ="testText">Accepted</p>
+            return <div className = "buttons text"><td>Application Accepted</td></div>
 
     }
 }
