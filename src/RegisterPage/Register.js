@@ -32,7 +32,6 @@ export function RegistrationForm(props){
     const [contactInfo,setContactInfo]=useState("")
     const [experience,setExperience]=useState("NONE")
     const [cv,setCv]=useState()
-    console.log(cv)
     
     async function handleSubmit(event){
         event.preventDefault()

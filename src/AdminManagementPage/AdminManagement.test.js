@@ -29,13 +29,13 @@ describe('admin page', () => {
 
       mockSuccessfulFetch(cvUrl)
       const cvLink = render(<CvLink applicant={applicationList[1]}/>)
-      fireEvent.click(cvLink.getByText("CV"))
+      fireEvent.click(cvLink.getByText("View"))
       
       await wait(()=> expect(openWindow).toHaveBeenCalledTimes(1))
     });
 
 
-    describe('application test buttons', () => {
+    describe('appliccation test buttons', () => {
 
         const setUpdateList = () => {}
 
@@ -49,21 +49,21 @@ describe('admin page', () => {
         test('SENT application', () => {
           const adminPage = render(<ApplicantButton applicant={applicationList[1]} setUpdateList = {setUpdateList}/>)
       
-            expect(adminPage.queryByText("Sent")).toBeInTheDocument(); 
+            expect(adminPage.queryByText("Test Sent")).toBeInTheDocument(); 
             expect(adminPage.queryByText("Reject")).toBeInTheDocument(); 
           });
 
         test('EXPIRED application', () => {
           const adminPage = render(<ApplicantButton applicant={applicationList[3]} setUpdateList = {setUpdateList}/>)
       
-            expect(adminPage.queryByText("Expired")).toBeInTheDocument(); 
+            expect(adminPage.queryByText("Test Expired")).toBeInTheDocument(); 
             expect(adminPage.queryByText("Reject")).toBeInTheDocument(); 
           });
 
         test('COMPLETED application', () => {
           const adminPage = render(<ApplicantButton applicant={applicationList[2]} setUpdateList = {setUpdateList}/>)
       
-            expect(adminPage.queryByText("Completed")).toBeInTheDocument(); 
+            expect(adminPage.getByText("Test Complete")).toBeInTheDocument(); 
             expect(adminPage.queryByText("Accept")).toBeInTheDocument(); 
             expect(adminPage.queryByText("Reject")).toBeInTheDocument(); 
           });
@@ -71,13 +71,13 @@ describe('admin page', () => {
         test('REJECTED application', () => {
           const adminPage = render(<ApplicantButton applicant={applicationList[5]} setUpdateList = {setUpdateList}/>)
       
-            expect(adminPage.queryByText("Rejected")).toBeInTheDocument(); 
+            expect(adminPage.getByText("Application Rejected")).toBeInTheDocument(); 
           });
 
         test('ACCEPTED application', () => {
             const adminPage = render(<ApplicantButton applicant={applicationList[4]} setUpdateList = {setUpdateList}/>)
       
-            expect(adminPage.queryByText("Accepted")).toBeInTheDocument(); 
+            expect(adminPage.getByText("Application Accepted")).toBeInTheDocument(); 
           });
     })
 })

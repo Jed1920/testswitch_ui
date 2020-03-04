@@ -7,7 +7,6 @@ import { getFetch } from '../General/apiFetch'
 export function AdminManagement(){
     const [applicantList, setApplicantList] = useState([])
     const [updateList, setUpdateList] = useState(listAction.NO_UPDATE)
-    console.log(applicantList)
     return(
         <LoadingPage setResponse = {setApplicantList} subscribesTo={[updateList]} url = "/application/get_all">
             <AdminManagementTable applicantList = {applicantList} setUpdateList = {setUpdateList}/>      
@@ -62,14 +61,16 @@ function ApplicantRow(props){
 
         case false :
             return (
-                <tr className="applicationRow" onClick={handleClick}>
-                    <td className="id idRow">{props.applicant.id}</td>
-                    <td className="name">{props.applicant.name}</td>
-                    <td className="email">{props.applicant.email}</td>
-                    <td className="contactInfo">{props.applicant.contactInfo}</td>
-                    <td className="experience">{props.applicant.experience}</td>
-                    <CvLink applicant = {props.applicant}/>
-                </tr>
+                <tbody>
+                    <tr className="applicationRow" onClick={handleClick}>
+                        <td className="id idRow">{props.applicant.id}</td>
+                        <td className="name">{props.applicant.name}</td>
+                        <td className="email">{props.applicant.email}</td>
+                        <td className="contactInfo">{props.applicant.contactInfo}</td>
+                        <td className="experience">{props.applicant.experience}</td>
+                        <CvLink applicant = {props.applicant}/>
+                    </tr>
+                </tbody>
                 )
     }
 }
@@ -78,7 +79,6 @@ export function CvLink(props){
 
     async function handleClick(){
         let keyName = `${props.applicant.id}_${props.applicant.name.replace(" ","_")}`
-        console.log(keyName)
         let response = await getFetch(`/application/get_url/${keyName}`)
         let json = await response.json()
         let cvUrl = await json.url

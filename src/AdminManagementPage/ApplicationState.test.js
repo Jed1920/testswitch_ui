@@ -24,21 +24,21 @@ describe('application test buttons', () => {
     test('SENT application', () => {
       const adminPage = render(<ApplicantButton applicant={applicationList[1]} setUpdateList = {setUpdateList}/>)
   
-        expect(adminPage.queryByText("Sent")).toBeInTheDocument(); 
+        expect(adminPage.queryByText("Test Sent")).toBeInTheDocument(); 
         expect(adminPage.queryByText("Reject")).toBeInTheDocument(); 
       });
 
     test('EXPIRED application', () => {
       const adminPage = render(<ApplicantButton applicant={applicationList[3]} setUpdateList = {setUpdateList}/>)
   
-        expect(adminPage.queryByText("Expired")).toBeInTheDocument(); 
+        expect(adminPage.queryByText("Test Expired")).toBeInTheDocument(); 
         expect(adminPage.queryByText("Reject")).toBeInTheDocument(); 
       });
 
     test('COMPLETED application', () => {
       const adminPage = render(<ApplicantButton applicant={applicationList[2]} setUpdateList = {setUpdateList}/>)
   
-        expect(adminPage.queryByText("Completed")).toBeInTheDocument(); 
+        expect(adminPage.queryByText("Test Complete")).toBeInTheDocument(); 
         expect(adminPage.queryByText("Accept")).toBeInTheDocument(); 
         expect(adminPage.queryByText("Reject")).toBeInTheDocument(); 
       });
@@ -46,13 +46,13 @@ describe('application test buttons', () => {
     test('REJECTED application', () => {
       const adminPage = render(<ApplicantButton applicant={applicationList[5]} setUpdateList = {setUpdateList}/>)
   
-        expect(adminPage.queryByText("Rejected")).toBeInTheDocument(); 
+        expect(adminPage.queryByText("Application Rejected")).toBeInTheDocument(); 
       });
 
     test('ACCEPTED application', () => {
         const adminPage = render(<ApplicantButton applicant={applicationList[4]} setUpdateList = {setUpdateList}/>)
   
-        expect(adminPage.queryByText("Accepted")).toBeInTheDocument(); 
+        expect(adminPage.queryByText("Application Accepted")).toBeInTheDocument(); 
       });
 
     test('check button adds SENT to url', () => {
