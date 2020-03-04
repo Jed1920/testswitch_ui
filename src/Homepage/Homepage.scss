@@ -1,0 +1,8 @@
+@import '../General/GlobalStylings.scss';
+
+.homepage{
+    min-height: 100vh;
+    background-color: $grey-color;
+    background: linear-gradient(0deg, $grey-color 0%, $dark-grey-color 76%);
+    margin-top: 60px;
+}
