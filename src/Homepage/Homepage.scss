@@ -2,7 +2,41 @@
 
 .homepage{
     min-height: 100vh;
-    background-color: $grey-color;
-    background: linear-gradient(0deg, $grey-color 0%, $dark-grey-color 76%);
-    margin-top: 60px;
+    margin-top: 70px;
+
+    .topSection{
+        position: relative;
+        width:80%;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: -1;
+        padding-bottom:50px;
+
+        .backgroundImage{
+            display: block;
+            width:100%;
+        }
+
+        .introPara{
+            position: absolute;
+            top:300px;
+            left:20px;
+            background-color:rgba($dark-grey-color,0.8);
+            width:400px;
+            height:450px;
+            color: $white-color;
+
+            h2{
+                margin-left:20px;
+                font-family:$header-text;
+                font-size: 30px;
+            }
+
+            p{
+                margin-left:10px;
+                margin-right:10px;
+                @include p
+            }
+        }
+    }
 }
