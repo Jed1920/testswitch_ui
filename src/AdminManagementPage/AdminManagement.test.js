@@ -1,8 +1,8 @@
 import React from 'react';
-import { render,wait } from '@testing-library/react';
-import { AdminManagement } from "./AdminManagement";
+import { render,wait, fireEvent } from '@testing-library/react';
+import { AdminManagement,CvLink } from "./AdminManagement";
 import { ApplicantButton } from './ApplicationState';
-import { applicationList } from '../General/mockedFetchData';
+import { applicationList, cvUrl } from '../General/mockedFetchData';
 import { mockSuccessfulFetch } from "../General/mockApiFetch";
 
 describe('admin page', () => {
@@ -17,11 +17,22 @@ describe('admin page', () => {
         mockSuccessfulFetch(applicationList)
         const adminPage = render(<AdminManagement/>)
 
-        await wait(()=> expect(adminPage.queryByTestId("Applications Table")).toBeInTheDocument());
+        await wait(()=> expect(adminPage.getByTestId("Applications Table")).toBeInTheDocument());
         await wait(()=> expect(adminPage.queryByText(applicationList[0].name)).toBeInTheDocument());
         await wait(()=> expect(adminPage.queryByText(applicationList[1].name)).toBeInTheDocument());
         await wait(()=> expect(adminPage.queryByText(applicationList[2].name)).toBeInTheDocument());
       });
+
+    test('renders button to view CV', async () => {
+
+      const openWindow = jest.spyOn(global, 'open');
+
+      mockSuccessfulFetch(cvUrl)
+      const cvLink = render(<CvLink applicant={applicationList[1]}/>)
+      fireEvent.click(cvLink.getByText("CV"))
+      
+      await wait(()=> expect(openWindow).toHaveBeenCalledTimes(1))
+    });
 
 
     describe('application test buttons', () => {

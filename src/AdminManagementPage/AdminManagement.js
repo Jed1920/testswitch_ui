@@ -7,7 +7,7 @@ import { getFetch } from '../General/apiFetch'
 export function AdminManagement(){
     const [applicantList, setApplicantList] = useState([])
     const [updateList, setUpdateList] = useState(listAction.NO_UPDATE)
-
+    console.log(applicantList)
     return(
         <LoadingPage setResponse = {setApplicantList} subscribesTo={[updateList]} url = "/application/get_all">
             <AdminManagementTable applicantList = {applicantList} setUpdateList = {setUpdateList}/>      
@@ -50,7 +50,7 @@ function ApplicantRow(props){
     )
 }
 
-function CvLink(props){
+export function CvLink(props){
     console.log(`${props.applicant.name} ${props.applicant.cv}`)
 
     async function handleClick(){
