@@ -2,3 +2,14 @@
 $orange-color: #fd9516;
 $dark-grey-color:#262626;
 $grey-color:#bfbfbf;
+$table-grey-color:#858585;
+$light-grey-color:#dfdfdf;
+$white-color:white;
+
+$header-text:'Rubik', sans-serif;
+$body-text:'Montserrat', sans-serif;
+
+@mixin p {
+    font-family: $body-text;
+    font-size: 17px;
+}
