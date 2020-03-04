@@ -1,8 +1,7 @@
 @import '../General/GlobalStylings.scss';
 
 .navbar{
-    background-color:$dark-grey-color;
-    
+    background-color:rgba($dark-grey-color,0.9);    
     
     position: fixed;
     top: 0;
@@ -11,18 +10,16 @@
     height: 60px;
     display: flex;
     align-items: center;
-    // padding:10px;
 
     .link{
-        color:$orange-color;
+        color:$light-grey-color;
         text-decoration: none;
         margin:20px;
         font-family: 'Rubik', sans-serif;
         font-size: 30px;
 
         &:hover{
-            color:grey;
-            
+            color:white;  
         }
     }
     .home{
@@ -32,10 +29,22 @@
     }
 
     .register{
-
+        background-color: rgba($orange-color,0.9); 
+        margin-left: auto;    
+        padding-left: 10px;    
+        padding-right: 10px;    
+        padding-top: 5px;
+        padding-bottom: 5px;
+        &:hover{
+            background-color:rgba($orange-color,1);  
+        }
     }
 
     .admin{
 
     }
+    .right{
+        margin-left: auto; 
+    }
+
 }

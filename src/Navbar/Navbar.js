@@ -6,8 +6,10 @@ export function Navbar(){
     return (
             <div className="navbar">
                 <Link to='/' className="link home">TestSwitch</Link>
-                <Link to='/register' className="link register">Apply</Link>
-                <Link to='/admin' className="link admin">Admin</Link>
+                <div className="right">
+                    <Link to='/admin' className="link admin">Admin</Link>
+                    <Link to='/register' className="link register">Apply Now</Link>
+                </div>
             </div>
     )
 }
