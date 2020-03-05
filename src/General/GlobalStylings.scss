@@ -13,3 +13,14 @@ $body-text:'Montserrat', sans-serif;
     font-family: $body-text;
     font-size: 17px;
 }
+
+@mixin buttonStyling{
+    background-color: rgba($orange-color,0.9); 
+    text-align: center;
+    color:$light-grey-color;
+
+    &:hover{
+        background-color: rgba($orange-color,1); 
+        color:$white-color;
+    }
+}

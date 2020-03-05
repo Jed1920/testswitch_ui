@@ -15,44 +15,36 @@
             color:$dark-grey-color;
         } 
     }
+
     .text{
         width: 20%;
     }
+
     .complete{
         width: 50%;
     }
 
     button{
+        @include buttonStyling;
         padding-top:8px;
         padding-bottom:8px;
         font-size: 20px;
         width:100%;
         border-radius: 10px;
-        border:2px solid $orange-color;
-        background-color: $table-grey-color;
-        color: $white-color;
+        border:none;
         width:120px;
-        &:hover{
-            color: $orange-color;
-            background-color: $white-color;
-        }
     }
 
     .rejectButton{
         width:120px;
         &:hover{
             color: red;
-            border: 2px solid red;
         }
-        
     }
+
     .acceptButton{
         &:hover{
             color: green;
-            border: 2px solid green;
         }
-    }
-    .testText{
-        // width:108px;
     }
 }
