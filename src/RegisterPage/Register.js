@@ -52,28 +52,43 @@ export function RegistrationForm(props){
     }
     return (
         <div className = "registerPage">
-            <h1>Registration Form</h1>
+            <img src="/images/register_image.png" alt="background image"/>
             <form onSubmit={handleSubmit} className = "registerForm">
-                <label>Name</label>
-                <input type="text" data-testid="Name" onChange={event => setName(event.target.value)}/>
+                <h1>Registration Form</h1>
 
-                <label>Email</label>
-                <input type="text" data-testid="Email" onChange={event => setEmail(event.target.value)}/>
+                <section className="formInput">
+                    <label>Name</label>
+                    <input type="text" data-testid="Name" onChange={event => setName(event.target.value)} className="field"/>
+                </section>
 
-                <label>Contact Info</label>
-                <input type="text" data-testid="Contact Info" onChange={event => setContactInfo(event.target.value)}/>
+                <section className="formInput">
+                    <label>Email</label>
+                    <input type="text" data-testid="Email" onChange={event => setEmail(event.target.value)} className="field"/>
+                </section>
 
-                <input type="file" data-testid="CV File" onChange={event => setCv(event.target.files[0])}/>
+                <section className="formInput">
+                    <label>Contact Info</label>
+                    <input type="text" data-testid="Contact Info" onChange={event => setContactInfo(event.target.value)} className="field"/>
+                </section>
 
-                <label>Experience</label>
-                <select data-testid="Experience" onChange={event => setExperience(event.target.value)}>
-                    <option value="NONE">No Experience</option>
-                    <option value="BEGINNER">Beginner</option>
-                    <option value="INTERMEDIATE">Intermediate</option>
-                    <option value="EXPERT">Expert</option>
-                </select>
+                <section className="formInput">
+                    <label>Upload CV</label>
+                    <input type="file" data-testid="CV File" onChange={event => setCv(event.target.files[0])} className="field file"/>
+                </section>
 
-                <input type="submit" name="Submit Button" value="Register" className="registerButton"/>
+                <section className="formInput">
+                    <label>Experience</label>
+                    <select data-testid="Experience" onChange={event => setExperience(event.target.value)} className="field">
+                        <option value="NONE">No Experience</option>
+                        <option value="BEGINNER">Beginner</option>
+                        <option value="INTERMEDIATE">Intermediate</option>
+                        <option value="EXPERT">Expert</option>
+                    </select>
+                </section>
+
+                <section className="formInput">
+                    <input type="submit" name="Submit Button" value="Register" className="registerButton"/>
+                </section>
                 
             </form>
         </div>)

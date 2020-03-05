@@ -31,13 +31,11 @@ export function AdminManagementTable(props){
 }
 
 function ApplicantRow(props){
-    const [cvButton,setCvButton] = useState(false)
     const [buttons,setButtons] = useState(false)
 
     function handleClick(){
-        if(cvButton == false){
-            setButtons(buttons == false)
-        }
+            setButtons(buttons === false)
+
     }
 
     switch(buttons){

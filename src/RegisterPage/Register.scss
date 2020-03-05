@@ -1,33 +1,87 @@
+@import '../General/GlobalStylings.scss';
+
 .registerPage{
-    margin-top:80px;
-    h1{
-        text-align: center;
+    margin-top:60px;
+    max-height: 100vh;
+    img{
+        display: block;
+            width:80%;
+            margin-top: 60px;
+            margin-left:auto;
+            margin-right:50px;
     }
     .registerForm{
-        text-align: center;
-        font-family: 'Rubik', sans-serif;
+        font-family: $body-text;
         font-size: 20px;
 
+        position: absolute;
+        top:150px;
+        left:120px;
+        background-color:rgba($dark-grey-color,0.85);
+        width:400px;
+        height:450px;
+        color: $white-color;
+        display: flex;
+        flex-direction: column;
+
+        h1{
+            font-family: $header-text;
+            font-size: 30px;
+            margin-left: 60px;
+        }
+        .formInput{
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 10px;
+            width:80%;
+        }
+
         label{ 
-            margin-top: 20px;
+            display: block;
+            margin-left: 30px;
+            margin-bottom: 5px;
             font-weight: 700;
         }
+        .field{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width:90%; 
+        }
+        .file{
+            width:60%;
+            text-align: center;
+        }
         input{
-            margin:auto;
-            margin-bottom: 20px;
-            width:400px; 
-            display: block; 
+        //     margin-left:20px;
+        //     margin-bottom: 20px;
             
+        //     display: block; 
         }
-        select{
-            width:200px; 
-            display: block; 
-            margin:auto; 
-        }
+
+        // select{
+        //     width:200px; 
+        //     display: block; 
+        //     margin-left:20px; 
+        // }
         .registerButton{
-            width:200px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
             margin-top:20px;
+            padding-top:8px;
+            padding-bottom:8px;
             font-size: 20px;
+            width:100%;
+            border-radius: 10px;
+            border:none;
+            background-color: $orange-color;
+            color: $white-color;
+            width:120px;
+            &:hover{
+                color: $orange-color;
+                background-color: $white-color;
+            }
         }
     }
 }
