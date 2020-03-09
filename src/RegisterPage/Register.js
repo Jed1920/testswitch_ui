@@ -73,7 +73,7 @@ export function RegistrationForm(props){
 
                 <section className="formInput">
                     <label>Upload CV</label>
-                    <input type="file" data-testid="CV File" onChange={event => setCv(event.target.files[0])} className="field file"/>
+                    <input type="file" data-testid="CV File" onChange={event => {console.log(event.target.files[0].size); setCv(event.target.files[0])}} className="field file"/>
                 </section>
 
                 <section className="formInput">

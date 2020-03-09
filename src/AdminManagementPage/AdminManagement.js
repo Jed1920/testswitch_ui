@@ -75,7 +75,8 @@ function ApplicantRow(props){
 
 export function CvLink(props){
 
-    async function handleClick(){
+    async function handleClick(e){
+        e.stopPropagation()
         let keyName = `${props.applicant.id}_${props.applicant.name.replace(" ","_")}`
         let response = await getFetch(`/application/get_url/${keyName}`)
         let json = await response.json()
