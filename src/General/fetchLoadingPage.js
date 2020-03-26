@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { getFetch } from '../General/apiFetch'
+import './fetchLoadingPage.scss'
 
 const fetchState = {
     ERROR: "error",
@@ -31,13 +32,13 @@ export function LoadingPage(props){
 
             case fetchState.ERROR:
                 return (
-                    <div>
+                    <div className="loadingPage">
                         <p>Status {status}</p>
                         <p>Something went wrong</p>
                     </div>)
 
             case fetchState.FETCHING:
-                return <p>Fetching data from database</p>
+                return <p className="loadingPage">Fetching data from database</p>
 
             case fetchState.COMPLETE:
                 return props.children}
