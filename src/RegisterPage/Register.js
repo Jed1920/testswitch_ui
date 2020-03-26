@@ -13,11 +13,11 @@ export function Register(){
 
         switch(registerState){
             case fetchState.ERROR:
-                return <p>Something went wrong, please try again</p>
+                return <p className="registerPage">Something went wrong, please try again</p>
             case fetchState.FETCHING:
-                return <p>Sending Application Form</p>
+                return <p className="registerPage">Sending Application Form</p>
             case fetchState.COMPLETE:
-                return (<section>
+                return (<section className="registerPage">
                             <p>Thank you for submitting an applicaition</p>
                             <p>We will be in touch shortly about the next steps</p>
                         </section>)}
@@ -41,7 +41,7 @@ export function RegistrationForm(props){
         formData.append("email",email)
         formData.append("contactInfo",contactInfo)
         formData.append("experience",experience)
-        formData.append("cvFile",cv)
+        formData.append("cvMultiFile",cv)
         try {
             props.setPageState(fetchState.FETCHING)
             await addApplicantFetch(formData)
