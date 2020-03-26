@@ -5,8 +5,8 @@ import { AuthContext } from '../General/AuthContext';
 
 export function Login(){
     const context = useContext(AuthContext);
-    const [username,setUsername] = useState("SJfUza6zgTsMyZfY3yMh")
-    const [password,setPassword] = useState("TCbQ4CFULqjXwX2lWCg6ASDea0UGBUj2Gbx2cZ1TcFJxPZXkOFqLkQzmnE2q7L2M")
+    const [username,setUsername] = useState()
+    const [password,setPassword] = useState()
 
     async function handleSubmit(event){
         event.preventDefault()
@@ -22,7 +22,9 @@ export function Login(){
 
     return (
         <div className="loginPage" onSubmit={handleSubmit}>
+            <img src="/images/login_image_01.jpg" alt="background image"/>
             <form className="loginForm">
+            <h1>Login</h1>
                 <section className="formInput">
                         <label>Username</label>
                         <input type="text" data-testid="Username" onChange={event => setUsername(event.target.value)} className="field" value = {username}/>
@@ -30,11 +32,11 @@ export function Login(){
 
                     <section className="formInput">
                         <label>Password</label>
-                        <input type="text" data-testid="Password" onChange={event => setPassword(event.target.value)} className="field" value = {password}/>
+                        <input type="password" data-testid="Password" onChange={event => setPassword(event.target.value)} className="field" value = {password}/>
                     </section>
 
-                    <section className="submitButton">
-                        <input type="submit"/>
+                    <section className="formInput">
+                        <input type="submit" className="submitButton"/>
                     </section>
             </form>
         </div>

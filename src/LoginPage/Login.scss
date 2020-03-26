@@ -6,20 +6,20 @@
     img{
         display: block;
             width:80%;
-            margin-top: 60px;
-            margin-left:auto;
-            margin-right:50px;
+            margin-top: 65px;
+            margin-left:50px;
+            margin-right:auto;
     }
     .loginForm{
         font-family: $body-text;
         font-size: 20px;
 
         position: absolute;
-        top:150px;
-        left:120px;
+        top:120px;
+        right:210px;
         background-color:rgba($dark-grey-color,0.85);
         width:400px;
-        height:200px;
+        height:300px;
         color: $white-color;
         display: flex;
         flex-direction: column;
